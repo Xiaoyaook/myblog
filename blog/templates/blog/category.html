@@ -1,0 +1,24 @@
+{% extends 'blog/index.html' %}
+{% load blog_tags %}
+
+{% block upside %}
+    <div class="up-aside">
+        <div class="container">
+            <h1 id="category-title">Category</h1>
+            <nav class="category-nav">
+                {% get_categories as category_list %}
+                <ul class="category-list">
+                        <li class="category-list-item">
+                            <a href="{% url 'blog:category' %}">All</a>
+                        </li>
+                        {% for category in category_list %}
+                        <li class="category-list-item">
+                            <a href="{% url 'blog:category_filter' category.name %}">{{ category.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+            </nav>
+        </div>
+
+    </div>
+{% endblock %}
